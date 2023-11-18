@@ -1,0 +1,81 @@
+.form-wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100%;
+  background-color: var(--secondary-color);
+  position: relative;
+  justify-content: center;
+  align-items: center;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
+    background-color: var(--secondary-color);
+    background: url("~/assets/img/form-background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.7;
+  }
+
+  & > form {
+    z-index: 10;
+    display: flex;
+    flex-flow: column nowrap;
+    gap:.5em;
+    background-color: var(--regular-glass);
+    padding: 3em 2em;
+    border-radius: var(--bordered);
+    width: min(500px, 100%);
+
+
+    & legend {
+        color: var(--light-color);
+        font-size: 2em;
+        font-weight: bolder;
+        text-transform: capitalize;
+    }
+
+    & fieldset {
+        flex: 1;
+        display: flex;
+        flex-flow: column nowrap;
+        gap: .5em;
+    }
+
+  }
+
+  & input[type="text"],
+  input[type="button"] {
+    width: 100%;
+  }
+}
+
+input::placeholder {
+  color: var(--light-color);
+  font-weight: bold;
+}
+
+input[type="button"] {
+  background-color: var(--primary-color);
+  padding: 1em;
+  min-width: 100px;
+  border-radius: var(--bordered);
+  font-weight: bolder;
+  color: var(--light-color);
+}
+
+input[type="text"], input[type="password"] {
+  background-color: var(--regular-glass);
+  backdrop-filter: blur(2px);
+  padding: 1em;
+  min-width: 100px;
+  color: var(--light-color);
+  font-weight: bold;
+  border-radius: var(--bordered);
+}
