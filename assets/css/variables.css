@@ -1,0 +1,7 @@
+:root {
+  --primary-color: #A8A6ED;
+  --secondary-color: #1D1A05;
+  --light-color: #FBFBF2;
+  --regular-glass: rgba(255,255, 255, .2);
+  --bordered: .3em;
+}

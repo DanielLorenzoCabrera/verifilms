@@ -1,0 +1,17 @@
+header {
+  display: flex;
+  flex-flow: row nowrap;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+
+  & figure {
+    width: 200px;
+
+    & img {
+       max-width: 100%;
+    }
+  }
+}

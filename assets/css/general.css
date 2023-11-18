@@ -1,0 +1,16 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  outline: 0;
+  font-family: 'Roboto', 'Courier New', Courier, monospace;
+}
+
+#app-wrapper {
+  background-color: antiquewhite;
+  height: 100dvh;
+  display: flex;
+  flex-flow: column nowrap;
+  position: relative;
+}
