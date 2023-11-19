@@ -16,14 +16,6 @@ export const useAuthStore = defineStore("Auth", {
       registeredUsers: [],
     } as Auth),
   actions: {
-    setEmail(email: String) {
-      const currentCredentials: Credential = this.currentCredentials;
-      this.currentCredentials = { ...currentCredentials, email };
-    },
-    setPassword(password: String) {
-      const currentCredentials: Credential = this.currentCredentials;
-      this.currentCredentials = { ...currentCredentials, password };
-    },
     isUserRegistered(credential: Credential) {
       const registeredUsers: Array<Credential> = this.registeredUsers;
       return registeredUsers.some(
