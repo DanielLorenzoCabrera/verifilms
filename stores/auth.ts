@@ -8,6 +8,7 @@ interface Auth {
 }
 
 export const useAuthStore = defineStore("Auth", {
+  persist: true,
   state: () =>
     ({
       isLoggedIn: false,
