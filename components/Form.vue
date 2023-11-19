@@ -1,6 +1,6 @@
 <script setup lang="ts">
     const props = defineProps({
-    action: { type: Function, required: true },
+    action: { type: Function, required: false },
     title: { type: String, required: false },
     submitLabel: { type: String, required: false, default: "send" },
     });
@@ -12,6 +12,6 @@
     <fieldset>
       <slot></slot>
     </fieldset>
-    <input type="button" @click="() => action" :value="submitLabel" />
+    <input v-if="action" type="button" @click="() => action" :value="submitLabel" />
   </form>
 </template>

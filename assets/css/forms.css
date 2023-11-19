@@ -1,3 +1,4 @@
+
 .form-wrapper {
   display: flex;
   flex-flow: column nowrap;
@@ -32,7 +33,7 @@
     padding: 3em 2em;
     border-radius: var(--bordered);
     width: min(500px, 100%);
-
+    backdrop-filter: blur(10px);
 
     & legend {
         color: var(--light-color);
@@ -46,6 +47,17 @@
         display: flex;
         flex-flow: column nowrap;
         gap: .5em;
+
+
+        & span {
+          align-self: flex-end;
+          color: var(--light-color);
+          padding: .5em 0;
+        }
+
+        & a {
+          font-weight: bolder;
+        }
     }
 
   }
@@ -68,6 +80,12 @@ input[type="button"] {
   border-radius: var(--bordered);
   font-weight: bolder;
   color: var(--light-color);
+  font-size: 1.1em;
+
+  &:hover {
+    filter: hue-rotate(2deg);
+    cursor: pointer;
+  }
 }
 
 input[type="text"], input[type="password"] {
@@ -79,3 +97,15 @@ input[type="text"], input[type="password"] {
   font-weight: bold;
   border-radius: var(--bordered);
 }
+
+a.link-button {
+  background-color: var(--primary-color);
+  color: var(--light-color);
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  height: var(--input-height);
+}
+
+

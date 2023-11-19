@@ -4,7 +4,12 @@
   margin: 0;
   border: 0;
   outline: 0;
-  font-family: 'Roboto', 'Courier New', Courier, monospace;
+  font-family: "Roboto", "Courier New", Courier, monospace;
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary-color);
 }
 
 #app-wrapper {
