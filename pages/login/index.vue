@@ -1,11 +1,33 @@
 <script setup lang="ts">
-const sendForm = () => console.log("test");
+import { reactive } from "vue";
+import type { Credential } from "~/types/User";
+
+const store = useAuthStore();
+const login = () => store.login(credentials);
+const credentials: Credential = reactive({
+  email: "",
+  password: "",
+});
+const emailChangeHandler = (payload: String) =>
+  (credentials.email = payload.toLocaleLowerCase());
+const passwordChangeHandler = (payload: String) =>
+  (credentials.password = payload);
 </script>
+
 <template>
   <FormWrapper>
-    <Form :action="sendForm" title="login" :submit-label="'login'">
-      <Input placeholder="email" />
-      <Input placeholder="pasword" type="password" />
+    <Form
+      submit-button
+      title="login"
+      :submit-label="'login'"
+      @submit="login"
+    >
+      <Input placeholder="email" @update="emailChangeHandler" />
+      <Input
+        placeholder="pasword"
+        type="password"
+        @update="passwordChangeHandler"
+      />
       <span>
         New to Verifilms?
         <nuxt-link to="/register">Sign up now</nuxt-link>

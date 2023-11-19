@@ -1,9 +1,11 @@
 <script setup lang="ts">
-    const props = defineProps({
-    action: { type: Function, required: false },
-    title: { type: String, required: false },
-    submitLabel: { type: String, required: false, default: "send" },
-    });
+const props = defineProps({
+  action: { type: Function, required: false },
+  title: { type: String, required: false },
+  submitButton: {type: Boolean, default: false},
+  submitLabel: { type: String, required: false, default: "send" },
+});
+defineEmits(["submit"]);
 </script>
 
 <template>
@@ -12,6 +14,11 @@
     <fieldset>
       <slot></slot>
     </fieldset>
-    <input v-if="action" type="button" @click="() => action" :value="submitLabel" />
+    <input
+      v-if="submitButton"
+      type="button"
+      @click="$emit('submit')"
+      :value="submitLabel"
+    />
   </form>
 </template>
