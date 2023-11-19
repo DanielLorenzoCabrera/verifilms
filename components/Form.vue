@@ -2,8 +2,7 @@
 const props = defineProps({
   action: { type: Function, required: false },
   title: { type: String, required: false },
-  submitButton: {type: Boolean, default: false},
-  submitLabel: { type: String, required: false, default: "send" },
+  submitLabel: { type: String, required: false },
 });
 defineEmits(["submit"]);
 </script>
@@ -15,7 +14,7 @@ defineEmits(["submit"]);
       <slot></slot>
     </fieldset>
     <input
-      v-if="submitButton"
+      v-if="submitLabel"
       type="button"
       @click="$emit('submit')"
       :value="submitLabel"

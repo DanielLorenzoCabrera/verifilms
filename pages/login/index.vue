@@ -16,12 +16,7 @@ const passwordChangeHandler = (payload: String) =>
 
 <template>
   <FormWrapper>
-    <Form
-      submit-button
-      title="login"
-      :submit-label="'login'"
-      @submit="login"
-    >
+    <Form title="login" submit-label="login" @submit="login">
       <Input placeholder="email" @update="emailChangeHandler" />
       <Input
         placeholder="pasword"
