@@ -6,5 +6,9 @@ export default defineNuxtConfig({
   typescript: {
     typeCheck: true,
   },
-  modules: ["@pinia/nuxt", '@pinia-plugin-persistedstate/nuxt',],
+  modules: [
+    "@pinia/nuxt",
+    "@pinia-plugin-persistedstate/nuxt",
+    "@vee-validate/nuxt",
+  ],
 });
