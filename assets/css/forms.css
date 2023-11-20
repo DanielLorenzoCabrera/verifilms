@@ -74,7 +74,6 @@ input::placeholder {
 }
 
 input[type="button"] {
-  background-color: var(--primary-color);
   padding: 1em;
   min-width: 100px;
   border-radius: var(--bordered);

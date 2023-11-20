@@ -1,0 +1,14 @@
+input[type="button"] {
+  background-color: var(--primary-color);
+}
+
+button,
+input[type="button"] {
+  &.primary-button {
+    background-color: var(--primary-color);
+  }
+
+  &.secondary-button {
+    background-color: var(--secondary-color);
+  }
+}

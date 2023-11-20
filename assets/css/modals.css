@@ -1,0 +1,22 @@
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & .vfm__content {
+    width: min(300px, 100%);
+    background-color: var(--light-color);
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    gap: 3em;
+    padding: 2em;
+    border-radius: var(--bordered);
+
+    & h1 {
+        color: var(--secondary-color);
+    }
+
+  }
+}
