@@ -7,4 +7,10 @@ export default defineNuxtConfig({
     typeCheck: true,
   },
   modules: ["@pinia/nuxt", "@pinia-plugin-persistedstate/nuxt"],
+  runtimeConfig: {
+    public: {
+      baseURL: "https://www.omdbapi.com/",
+      APIKey: "cd214d21",
+    },
+  },
 });
