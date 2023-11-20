@@ -1,11 +1,8 @@
 header {
   display: flex;
   flex-flow: row nowrap;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
   z-index: 10;
+  background-color: transparent;
 
   & figure {
     width: 200px;

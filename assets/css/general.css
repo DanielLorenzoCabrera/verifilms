@@ -13,7 +13,7 @@ a {
 }
 
 #app-wrapper {
-  background-color: antiquewhite;
+  background-color: var(--secondary-color);
   height: 100dvh;
   display: flex;
   flex-flow: column nowrap;
