@@ -15,7 +15,7 @@ export const useModalStore = defineStore("Modal", {
     setModalDisplay(isOpen: Boolean) {
       this.isOpen = isOpen;
     },
-    setModalTitle(title: string) {
+    setModalTitle(title: String) {
       this.title = title;
     },
   },

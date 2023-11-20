@@ -1,6 +1,5 @@
 import { defineStore } from "pinia";
 import type { Credential } from "~/types/User";
-
 interface Auth {
   isLoggedIn: Boolean;
   currentCredentials: Credential;
@@ -16,6 +15,11 @@ export const useAuthStore = defineStore("Auth", {
       registeredUsers: [],
     } as Auth),
   actions: {
+    displayModalMessage(title: String): void {
+      const modalStore = useModalStore();
+      modalStore.setModalTitle(title);
+      modalStore.setModalDisplay(true);
+    },
     isUserRegistered(credential: Credential) {
       const registeredUsers: Array<Credential> = this.registeredUsers;
       return registeredUsers.some(
@@ -23,18 +27,20 @@ export const useAuthStore = defineStore("Auth", {
           registeredUser.email === credential.email
       );
     },
-    login(credential: Credential) {
+    login(credential: Credential): void {
       const isUserRegistered: Boolean = this.isUserRegistered(credential);
       if (isUserRegistered) {
         this.currentCredentials = { ...credential };
         this.isLoggedIn = true;
       }
-      return console.log("the user is not registered");
+      return this.displayModalMessage("The user does not exists");
     },
-    register(credential: Credential) {
+    register(credential: Credential): void {
       const isUserRegistered: Boolean = this.isUserRegistered(credential);
-      if (isUserRegistered) return console.log("this account already exists");
+      if (isUserRegistered)
+        return this.displayModalMessage("This user already exists");
       this.registeredUsers = [...this.registeredUsers, credential];
+      navigateTo({ name: "films" });
     },
   },
 });
