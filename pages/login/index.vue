@@ -1,19 +1,12 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import type { Credential } from "~/types/User";
 
 const store = useAuthStore();
-const login = () => console.log("hey"); //store.login(credentials);
-/* const credentials: Credential = reactive({
-  email: "",
-  password: "",
-}); */
 const email = ref("");
 const password = ref("");
-/* const emailChangeHandler = (payload: String) =>
-  (credentials.email = payload.toLocaleLowerCase());
-const passwordChangeHandler = (payload: String) =>
-  (credentials.password = payload); */
+const login = () =>
+  store.login({ email: email.value, password: password.value });
+
 </script>
 
 <template>

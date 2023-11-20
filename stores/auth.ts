@@ -27,20 +27,33 @@ export const useAuthStore = defineStore("Auth", {
           registeredUser.email === credential.email
       );
     },
+    validateCreadendials(credential: Credential) {
+      const { email, password }: Credential = credential;
+      const user = this.registeredUsers.find(
+        (userCredential: Credential) => email === userCredential.email
+      );
+      return user !== undefined && user.password === credential.password;
+    },
     login(credential: Credential): void {
-      const isUserRegistered: Boolean = this.isUserRegistered(credential);
-      if (isUserRegistered) {
+      const isNotRegistered: Boolean = !this.isUserRegistered(credential);
+      if (isNotRegistered)
+        return this.displayModalMessage("The user does not exists");
+      const areCorrectCredentials: Boolean = this.validateCreadendials(credential);
+      if (areCorrectCredentials) {
+        this.validateCreadendials(credential);
         this.currentCredentials = { ...credential };
         this.isLoggedIn = true;
+        navigateTo({ name: "films" });
+        return 
       }
-      return this.displayModalMessage("The user does not exists");
+      return this.displayModalMessage("Invalid credentials");;
     },
     register(credential: Credential): void {
       const isUserRegistered: Boolean = this.isUserRegistered(credential);
       if (isUserRegistered)
         return this.displayModalMessage("This user already exists");
       this.registeredUsers = [...this.registeredUsers, credential];
-      navigateTo({ name: "films" });
+      navigateTo({ name: "login" });
     },
   },
 });
