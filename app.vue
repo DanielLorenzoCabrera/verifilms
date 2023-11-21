@@ -4,9 +4,14 @@ import { ModalsContainer, useModal } from "vue-final-modal";
 import Generic from "~/components/Modal/Generic.vue";
 import { watch } from "vue";
 
-const store = useModalStore();
-const { getIsOpen, getTitle } = storeToRefs(store);
-const setModalDisplay = (isOpen: Boolean) => store.setModalDisplay(isOpen);
+const modalStore = useModalStore();
+const { getIsOpen, getTitle } = storeToRefs(modalStore);
+
+const authStore = useAuthStore();
+const { isLoggedIn } = storeToRefs(authStore);
+
+const search = (ee: String) => console.log(ee)
+const setModalDisplay = (isOpen: Boolean) => modalStore.setModalDisplay(isOpen);
 const { open, close, patchOptions } = useModal({
   component: Generic,
   attrs: {
@@ -16,7 +21,6 @@ const { open, close, patchOptions } = useModal({
     },
   },
 });
-
 
 watch(getIsOpen, (isOpen: Boolean) => {
   if (isOpen) open();
@@ -29,7 +33,9 @@ watch(getTitle, (title: String) => {
 
 <template>
   <AppWrapper>
-    <Header :logo="logo" />
+    <Header :logo="logo">
+      <SearchBar v-if="isLoggedIn"  placeholder="search films & more" @update="search"/>
+    </Header>
     <NuxtPage />
     <ModalsContainer />
   </AppWrapper>

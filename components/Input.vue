@@ -4,6 +4,7 @@ const props = defineProps({
   type: { required: false, type: String, default: "text" },
   placeholder: { required: true, type: String },
   modelValue: { required: true },
+  class: { type: String, required: false },
 });
 
 const emit = defineEmits(["update:modelValue"]);
@@ -17,5 +18,6 @@ const update = (event: any): void =>
     :placeholder="placeholder"
     :value="modelValue"
     @input="update"
+    :class="class"
   />
 </template>
