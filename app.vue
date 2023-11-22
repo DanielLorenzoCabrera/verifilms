@@ -10,7 +10,7 @@ const { getIsOpen, getTitle } = storeToRefs(modalStore);
 const authStore = useAuthStore();
 const { isLoggedIn } = storeToRefs(authStore);
 
-const {searchMedia} = useOMDBStore()
+const {searchMedia} = useMediaStore()
 const search = (search: String) => searchMedia(search)
 const setModalDisplay = (isOpen: Boolean) => modalStore.setModalDisplay(isOpen);
 const { open, close, patchOptions } = useModal({

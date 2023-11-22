@@ -7,7 +7,7 @@ interface MediaStore {
   search: Search;
 }
 
-export const useOMDBStore = defineStore("Media", {
+export const useMediaStore = defineStore("Media", {
   state: () =>
     ({
       filmsAndSeries: [],
