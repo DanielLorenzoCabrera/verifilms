@@ -1,15 +1,13 @@
-import type { AsyncDataOptions } from "nuxt/app";
-import type { RuntimeConfig } from "nuxt/schema";
 import { defineStore } from "pinia";
-import type { OMDB_Media, Search } from "~/types/Film";
+import type { OMDB_Media, Search } from "~/types/Media";
 
-interface OMDBStore {
+interface MediaStore {
   filmsAndSeries: Array<OMDB_Media>;
   mediaSelected: OMDB_Media | null;
   search: Search;
 }
 
-export const useOMDBStore = defineStore("Film", {
+export const useOMDBStore = defineStore("Media", {
   state: () =>
     ({
       filmsAndSeries: [],
@@ -18,7 +16,7 @@ export const useOMDBStore = defineStore("Film", {
         title: "",
         page: 1,
       },
-    } as OMDBStore),
+    } as MediaStore),
   actions: {
     async searchMedia(search: String): Promise<void> {
       const { data, error } = await useOMDBAPI({ params: { s: search } });

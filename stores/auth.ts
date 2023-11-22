@@ -43,7 +43,7 @@ export const useAuthStore = defineStore("Auth", {
         this.validateCreadendials(credential);
         this.currentCredentials = { ...credential };
         this.isLoggedIn = true;
-        navigateTo({ name: "films" });
+        navigateTo({ name: "media" });
         return 
       }
       return this.displayModalMessage("Invalid credentials");;
