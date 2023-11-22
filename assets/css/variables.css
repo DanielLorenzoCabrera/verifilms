@@ -1,8 +1,11 @@
 :root {
-  --primary-color: #71A9F7;
+  --primary-color: #28AFB0;
   --secondary-color: #1D1A05;
   --light-color: #FBFBF2;
+  --dark-color: #0B0500;
   --regular-glass: rgba(255,255, 255, .2);
   --bordered: .3em;
   --input-height: 40px;
+  --series-color: #F3C178;
+  --movie-color: #FE5E41;
 }

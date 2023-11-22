@@ -1,0 +1,54 @@
+main {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 5em 1em 2em 1em;
+  gap: 2em;
+  height: 100dvh;
+
+  .film-card {
+    width: min(300px, 100%);
+    cursor: pointer;
+
+    &:hover h2 {
+        color: var(--primary-color);
+    }
+
+    &.movie span:first-of-type {
+      color: var(--movie-color);
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    &.series span:first-of-type {
+      font-weight: bold;
+      color: var(--series-color);
+      text-transform: uppercase;
+    }
+
+
+    & figure {
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+      position: relative;
+    }
+    & section {
+      display: flex;
+      flex-flow: column nowrap;
+      gap: 0.5em;
+      padding: 1em;
+      color: var(--light-color);
+
+      & h2 {
+        font-size: 1.2em;
+      }
+
+      & div {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+  }
+}

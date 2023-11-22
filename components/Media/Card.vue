@@ -5,13 +5,20 @@ const props = defineProps({
   title: { type: String, required: true },
   type: { type: String, required: true },
   year: { type: String, required: true },
+  customClasses: { type: Array<string>, required: false },
 });
 </script>
 <template>
-  <article class="film-card">
+  <article class="film-card" :class="customClasses">
     <figure v-if="poster">
       <img :src="poster" />
     </figure>
-    <section></section>
+    <section>
+      <h2>{{ title }}</h2>
+      <div>
+        <span>{{ type }}</span>
+        <span>{{ year }}</span>
+      </div>
+    </section>
   </article>
 </template>

@@ -3,9 +3,12 @@ header {
   flex-flow: row nowrap;
   z-index: 10;
   background-color: transparent;
+  backdrop-filter: blur(10px);
   align-items: center;
   justify-content: space-between;
-  padding: 2em 2em 0 0;
+  padding: 1em 2em 0 0;
+  position: fixed;
+  width: 100%;
 
   & figure {
     width: 200px;
