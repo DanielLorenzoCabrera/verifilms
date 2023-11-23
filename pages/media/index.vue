@@ -1,44 +1,19 @@
 <script setup lang="ts">
-import type CardDisplayerVue from "~/components/Media/CardDisplayer.vue";
+const mediaStore = useMediaStore();
+const {filmsAndSeries} = storeToRefs(mediaStore)
 
-const media = [
-  {
-    id: "1",
-    title: "Game of thrones",
-    poster:
-      "https://m.media-amazon.com/images/M/MV5BN2IzYzBiOTQtNGZmMi00NDI5LTgxMzMtN2EzZjA1NjhlOGMxXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_SX300.jpg",
-    type: "movie",
-    year: "2013",
-  },
-  {
-    id: "2",
-    title: "Squid Game",
-    poster:
-      "https://m.media-amazon.com/images/M/MV5BN2IzYzBiOTQtNGZmMi00NDI5LTgxMzMtN2EzZjA1NjhlOGMxXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_SX300.jpg",
-    type: "movie",
-    year: "2021",
-  },
-  {
-    id: "3",
-    title: "Apollo",
-    poster:
-      "https://m.media-amazon.com/images/M/MV5BN2IzYzBiOTQtNGZmMi00NDI5LTgxMzMtN2EzZjA1NjhlOGMxXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_SX300.jpg",
-    type: "series",
-    year: "2000",
-  },
-];
 </script>
 <template>
   <MediaCardDisplayer :loading="false">
     <MediaCard
-      v-for="(item, index) in media"
-      :key="item.id"
-      :id="item.id"
-      :title="item.title"
-      :poster="item.poster"
-      :type="item.type"
-      :year="item.year"
-      :custom-classes="[item.type]"
+      v-for="(item, index) in filmsAndSeries"
+      :key="item.imdbID.toString()"
+      :id="item.imdbID.toString()"
+      :title="item.Title.toString()"
+      :poster="item.Poster?.toString()"
+      :type="item.Type.toString()"
+      :year="item.Year.toString()"
+      :custom-classes="[item.Type.toString()]"
     />
   </MediaCardDisplayer>
 </template>

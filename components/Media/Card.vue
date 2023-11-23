@@ -14,7 +14,7 @@ const props = defineProps({
       <img :src="poster" />
     </figure>
     <section>
-      <h2>{{ title }}</h2>
+      <h2> {{ title }}</h2>
       <div>
         <span>{{ type }}</span>
         <span>{{ year }}</span>

@@ -21,7 +21,7 @@ export const useMediaStore = defineStore("Media", {
     async searchMedia(search: String): Promise<void> {
       const { data, error } = await useOMDBAPI({ params: { s: search } });
       const { Search } = data.value;
-      this.filmsAndSeries = Search;
+      this.setFilmsAndSeries(Search);
     },
     setFilmsAndSeries(filmsAndSeries: Array<OMDB_Media>): void {
       this.filmsAndSeries = [...filmsAndSeries];
