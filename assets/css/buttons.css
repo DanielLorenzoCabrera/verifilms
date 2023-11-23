@@ -1,9 +1,9 @@
-input[type="button"] {
-  background-color: var(--primary-color);
-}
-
 button,
 input[type="button"] {
+  background-color: var(--primary-color);
+  padding: 0.5em;
+  cursor: pointer;
+
   &.primary-button {
     background-color: var(--primary-color);
   }
@@ -12,3 +12,4 @@ input[type="button"] {
     background-color: var(--secondary-color);
   }
 }
+

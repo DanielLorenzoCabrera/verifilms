@@ -1,13 +1,12 @@
 <script setup lang="ts">
-import { ref } from "vue";
 const props = defineProps({
   type: { required: false, type: String, default: "text" },
-  placeholder: { required: true, type: String },
-  modelValue: { required: true },
+  placeholder: { required: false, type: String },
+  modelValue: { required: false },
   class: { type: String, required: false },
 });
 
-const emit = defineEmits(["update:modelValue"]);
+const emit = defineEmits(["update:modelValue", "click"]);
 const update = (event: any): void =>
   emit("update:modelValue", event.target.value);
 </script>
@@ -19,5 +18,6 @@ const update = (event: any): void =>
     :value="modelValue"
     @input="update"
     :class="class"
+    @click="$emit('click')"
   />
 </template>
