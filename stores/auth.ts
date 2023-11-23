@@ -6,12 +6,14 @@ interface Auth {
   registeredUsers: Array<Credential>;
 }
 
+const emptyCredential: Credential = { email: "", password: "" };
+
 export const useAuthStore = defineStore("Auth", {
   persist: true,
   state: () =>
     ({
       isLoggedIn: false,
-      currentCredentials: { email: "", password: "" },
+      currentCredentials: { ...emptyCredential },
       registeredUsers: [],
     } as Auth),
   actions: {
@@ -38,21 +40,27 @@ export const useAuthStore = defineStore("Auth", {
       const isNotRegistered: Boolean = !this.isUserRegistered(credential);
       if (isNotRegistered)
         return this.displayModalMessage("The user does not exists");
-      const areCorrectCredentials: Boolean = this.validateCreadendials(credential);
+      const areCorrectCredentials: Boolean =
+        this.validateCreadendials(credential);
       if (areCorrectCredentials) {
         this.validateCreadendials(credential);
         this.currentCredentials = { ...credential };
         this.isLoggedIn = true;
         navigateTo({ name: "media" });
-        return 
+        return;
       }
-      return this.displayModalMessage("Invalid credentials");;
+      return this.displayModalMessage("Invalid credentials");
     },
     register(credential: Credential): void {
       const isUserRegistered: Boolean = this.isUserRegistered(credential);
       if (isUserRegistered)
         return this.displayModalMessage("This user already exists");
       this.registeredUsers = [...this.registeredUsers, credential];
+      navigateTo({ name: "login" });
+    },
+    logout() {
+      this.currentCredentials = { ...emptyCredential };
+      this.isLoggedIn = false;
       navigateTo({ name: "login" });
     },
   },

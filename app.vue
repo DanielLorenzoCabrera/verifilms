@@ -8,10 +8,11 @@ const modalStore = useModalStore();
 const { getIsOpen, getTitle } = storeToRefs(modalStore);
 
 const authStore = useAuthStore();
+const { logout :logoutAction } = authStore;
 const { isLoggedIn } = storeToRefs(authStore);
 
-const {searchMedia} = useMediaStore()
-const search = (search: String) => searchMedia(search)
+const { searchMedia } = useMediaStore();
+const search = (search: String) => searchMedia(search);
 const setModalDisplay = (isOpen: Boolean) => modalStore.setModalDisplay(isOpen);
 const { open, close, patchOptions } = useModal({
   component: Generic,
@@ -30,12 +31,17 @@ watch(getIsOpen, (isOpen: Boolean) => {
 watch(getTitle, (title: String) => {
   patchOptions({ attrs: { title: title.toString() } });
 });
+
+const logout = () => logoutAction();
 </script>
 
 <template>
   <AppWrapper>
     <Header :logo="logo">
-      <SearchBar v-if="isLoggedIn"  placeholder="search films & more" @update="search"/>
+      <template v-if="isLoggedIn">
+        <SearchBar placeholder="search films & more" @update="search" />
+        <Input @click="logout" type="button" value="Sign out" class="logout" />
+      </template>
     </Header>
     <NuxtPage />
     <ModalsContainer />
