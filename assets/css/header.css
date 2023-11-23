@@ -2,7 +2,7 @@ header {
   display: flex;
   flex-flow: row nowrap;
   z-index: 10;
-  background-color: transparent;
+  background-color: var(--dark-glass-color);
   backdrop-filter: blur(10px);
   align-items: center;
   padding: 1em 2em 0 0;

@@ -1,12 +1,13 @@
 :root {
-  --primary-color: #28AFB0;
-  --secondary-color: #1D1A05;
-  --light-color: #FBFBF2;
-  --dark-color: #0B0500;
-  --regular-glass: rgba(255,255, 255, .2);
-  --bordered: .3em;
+  --primary-color: #28afb0;
+  --secondary-color: #1d1a05;
+  --light-color: #fbfbf2;
+  --dark-color: #0b0500;
+  --dark-glass-color: rgba(11, 5, 0, 0.5);
+  --regular-glass: rgba(255, 255, 255, 0.2);
+  --bordered: 0.3em;
   --input-height: 40px;
-  --series-color: #F3C178;
-  --movie-color: #FE5E41;
-  --danger-color: #D50D0D;
+  --series-color: #f3c178;
+  --movie-color: #fe5e41;
+  --danger-color: #d50d0d;
 }
