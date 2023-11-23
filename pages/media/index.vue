@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type CardDisplayerVue from "~/components/Media/CardDisplayer.vue";
+
 const media = [
   {
     id: "1",
@@ -27,7 +29,7 @@ const media = [
 ];
 </script>
 <template>
-  <main>
+  <MediaCardDisplayer :loading="false">
     <MediaCard
       v-for="(item, index) in media"
       :key="item.id"
@@ -38,5 +40,5 @@ const media = [
       :year="item.year"
       :custom-classes="[item.type]"
     />
-  </main>
+  </MediaCardDisplayer>
 </template>

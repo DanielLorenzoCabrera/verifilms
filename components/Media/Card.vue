@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const props = defineProps({
-  id: { type: String, requied: true },
+  id: { type: String, required: true },
   poster: { type: String, required: false },
   title: { type: String, required: true },
   type: { type: String, required: true },
