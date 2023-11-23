@@ -32,6 +32,8 @@ watch(getTitle, (title: String) => {
   patchOptions({ attrs: { title: title.toString() } });
 });
 
+searchMedia("Game")
+
 const logout = () => logoutAction();
 </script>
 

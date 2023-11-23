@@ -22,9 +22,16 @@ export const useMediaStore = defineStore("Media", {
       const { data, error } = await useOMDBAPI({ params: { s: search } });
       const { Search } = data.value;
       this.setFilmsAndSeries(Search);
+      this.setNewtSearch(Search);
     },
     setFilmsAndSeries(filmsAndSeries: Array<OMDB_Media>): void {
       this.filmsAndSeries = [...filmsAndSeries];
+    },
+    setNewtSearch(search: Search) {
+      this.search = { ...search, page: 1 };
+    },
+    setSearchPage(page: number) {
+      this.search = { ...this.search, page };
     },
   },
 });
