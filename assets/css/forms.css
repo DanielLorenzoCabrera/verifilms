@@ -32,7 +32,7 @@
     z-index: 10;
     display: flex;
     flex-flow: column nowrap;
-    gap:.5em;
+    gap:1em;
     background-color: var(--regular-glass);
     padding: 3em 2em;
     border-radius: var(--bordered);
@@ -66,8 +66,20 @@
 
   }
 
+  & label {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: .2em;
+    color: var(--light-color);
+    font-weight: bold;
+
+    & input {
+      font-size: 1em;
+    }
+  }
+
   & input[type="text"],
-  input[type="button"] {
+  input[type="button"], label {
     width: 100%;
   }
 }

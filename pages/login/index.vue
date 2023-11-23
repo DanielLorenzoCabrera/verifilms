@@ -12,8 +12,8 @@ const login = () =>
 <template>
   <FormWrapper>
     <Form title="login" submit-label="login" @submit="login">
-      <Input v-model="email" placeholder="email" />
-      <Input placeholder="pasword" type="password" v-model="password" />
+      <Input v-model="email" label="email" />
+      <Input label="pasword" type="password" v-model="password" />
       <span>
         New to Verifilms?
         <nuxt-link to="/register">Sign up now</nuxt-link>
