@@ -5,6 +5,7 @@ interface MediaStore {
   filmsAndSeries: Array<OMDB_Media>;
   mediaSelected: OMDB_Media | null;
   search: Search;
+  loading: boolean;
 }
 
 export const useMediaStore = defineStore("Media", {
@@ -16,22 +17,39 @@ export const useMediaStore = defineStore("Media", {
         title: "",
         page: 1,
       },
+      loading: false,
     } as MediaStore),
   actions: {
-    async searchMedia(search: String): Promise<void> {
-      const { data, error } = await useOMDBAPI({ params: { s: search } });
-      const { Search } = data.value;
+    async searchMediaByTitle(title: String): Promise<void> {
+      this.setLoading(true)
+      this.setNewSearchTitle(title);
+      const Search = await this.getOMDBMedia({s: title})
       this.setFilmsAndSeries(Search);
-      this.setNewtSearch(Search);
+      this.setLoading(false)
     },
-    setFilmsAndSeries(filmsAndSeries: Array<OMDB_Media>): void {
+    async getOMDBMedia(params: Object){
+      this.setLoading(false)
+      const config = useRuntimeConfig();
+      const { baseURL, APIKey }: any = config.public;
+      const { Search } = await $fetch("/", {
+        baseURL,
+        params: { apikey: APIKey, ...params },
+        server: false,
+      });
+      this.setLoading(true)
+      return Search
+    },
+    setFilmsAndSeries(filmsAndSeries: Array<OMDB_Media> = []): void {
       this.filmsAndSeries = [...filmsAndSeries];
     },
-    setNewtSearch(search: Search) {
-      this.search = { ...search, page: 1 };
+    setNewSearchTitle(title: String) {
+      this.search = { title, page: 1 };
     },
     setSearchPage(page: number) {
       this.search = { ...this.search, page };
+    },
+    setLoading(loading: boolean) {
+      this.loading = loading;
     },
   },
 });

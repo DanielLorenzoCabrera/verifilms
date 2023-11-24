@@ -9,7 +9,6 @@ export const useGeneralStore = defineStore("General", {
     } as GeneralStore),
   actions: {
     setIsMobile(screenWidth: number) {
-        console.log(screenWidth)
       this.isMobile = screenWidth <= 480;
     },
   },

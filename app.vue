@@ -21,8 +21,8 @@ const authStore = useAuthStore();
 const { logout: logoutAction } = authStore;
 const { isLoggedIn } = storeToRefs(authStore);
 
-const { searchMedia } = useMediaStore();
-const search = (search: String) => searchMedia(search);
+const { searchMediaByTitle } = useMediaStore();
+const search = (search: String) => searchMediaByTitle(search);
 
 const generalStore = useGeneralStore();
 const { setIsMobile } = generalStore;
@@ -46,7 +46,7 @@ watch(getTitle, (title: String) => {
   patchOptions({ attrs: { title: title.toString() } });
 });
 
-searchMedia("Game");
+await searchMediaByTitle("Game");
 
 const logout = () => logoutAction();
 </script>
