@@ -8,6 +8,7 @@ export const useOMDBAPI = async (
   const { data, error } = await useFetch("/", {
     baseURL,
     params: { apikey: APIKey, ...params },
+    server: false,
   });
   return { data, error };
 };
