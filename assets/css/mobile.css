@@ -1,0 +1,10 @@
+#app-wrapper.mobile {
+  & header {
+    justify-content: center;
+    & .search-bar {
+      order: 2;
+      width: 100%;
+      max-width: none;
+    }
+  }
+}
