@@ -6,11 +6,15 @@ export default defineNuxtConfig({
   typescript: {
     typeCheck: true,
   },
-  modules: ["@pinia/nuxt", "@pinia-plugin-persistedstate/nuxt"],
+  modules: ["@pinia/nuxt", "@pinia-plugin-persistedstate/nuxt", '@nuxt/ui'],
   runtimeConfig: {
     public: {
       baseURL: "https://www.omdbapi.com",
       APIKey: "cd214d21",
     },
+    ui: {
+      global: true,
+      icons: ['mdi', 'simple-icons']
+    }
   },
 });
