@@ -42,3 +42,11 @@ span.no-items {
     width: 100px;
   }
 }
+
+footer {
+  width: 100%;
+  padding: 2em 1em;
+  display: flex;
+  justify-content: center;
+
+}
