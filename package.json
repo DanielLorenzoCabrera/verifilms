@@ -9,6 +9,9 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
+  "engines": {
+    "node": ">=20.8.0"
+  },
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@pinia-plugin-persistedstate/nuxt": "^1.2.0",
