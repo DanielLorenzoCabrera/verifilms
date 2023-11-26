@@ -72,9 +72,10 @@ main {
 
 .media-info {
   display: flex;
+  flex-flow: row wrap;
   height: 100%;
   width: 100%;
-  padding: 10em 2em;
+  padding: 10em 1em;
   gap: 2em;
 
   & h1 {
@@ -89,10 +90,9 @@ main {
   & figure {
     width: 300px;
     height: 450px;
-    background-color: yellow;
   }
 
-  & section {
+  & > section {
     display: flex;
     flex-flow: column nowrap;
     flex: 1 0 300px;

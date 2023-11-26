@@ -37,6 +37,7 @@ watch(page, async (newPage) => {
 
     <Footer>
       <UPagination
+        v-if="filmsAndSeries.length > 0"
         :max="3"
         :page-count="5"
         :total="totalPages"
