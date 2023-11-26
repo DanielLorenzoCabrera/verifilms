@@ -51,7 +51,13 @@ export const useAuthStore = defineStore("Auth", {
       }
       return this.displayModalMessage("Invalid credentials");
     },
+    isValidEmail(email: String) {
+      const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+      return email.match(emailRegex);
+    },
     register(credential: Credential): void {
+      const isValidEmail = this.isValidEmail(credential.email);
+      if (!isValidEmail) return this.displayModalMessage("Invalid email");
       const isUserRegistered: Boolean = this.isUserRegistered(credential);
       if (isUserRegistered)
         return this.displayModalMessage("This user already exists");
