@@ -21,8 +21,10 @@ const authStore = useAuthStore();
 const { logout: logoutAction } = authStore;
 const { isLoggedIn } = storeToRefs(authStore);
 
-const { searchMediaByTitle } = useMediaStore();
-const search = (search: String) => searchMediaByTitle(search);
+const mediaStore = useMediaStore();
+const { searchMediaByTitle } = mediaStore;
+const { search } = storeToRefs(mediaStore);
+const searchMedia = (search: String) => searchMediaByTitle(search);
 
 const generalStore = useGeneralStore();
 const { setIsMobile } = generalStore;
@@ -45,8 +47,10 @@ watch(getIsOpen, (isOpen: Boolean) => {
 watch(getTitle, (title: String) => {
   patchOptions({ attrs: { title: title.toString() } });
 });
-
-await searchMediaByTitle("Game");
+const existPreviousSearch = search.value.title !== "";
+existPreviousSearch
+  ? await searchMediaByTitle(search.value.title, Number(search.value.page))
+  : await searchMediaByTitle("Game");
 
 const logout = () => logoutAction();
 </script>
@@ -55,7 +59,7 @@ const logout = () => logoutAction();
   <AppWrapper :classes="appWrapperClasses">
     <Header :logo="logo">
       <template v-if="isLoggedIn">
-        <SearchBar placeholder="search films & more" @update="search" />
+        <SearchBar placeholder="search films & more" @update="searchMedia" />
         <Input @click="logout" type="button" value="Sign out" class="logout" />
       </template>
     </Header>
