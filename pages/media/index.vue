@@ -1,16 +1,19 @@
 <script setup lang="ts">
 import coverUnavailable from "~/assets/img/cover_unavailable.jpg";
 import { ref, watch } from "vue";
-const page = ref(1)
+const page = ref(1);
 const mediaStore = useMediaStore();
 const { filmsAndSeries, loading, totalPages, search } = storeToRefs(mediaStore);
+
+const navigateToMediaInfo = async (id: string) =>
+  await navigateTo({ path: `media/${id}` });
 
 const noFilmsMessage =
   "Oops! It seems like we don't have what you're looking for";
 watch(page, async (newPage) => {
-  const {title} = search.value;
-  await mediaStore.searchMediaByTitle(title, newPage)
-})
+  const { title } = search.value;
+  await mediaStore.searchMediaByTitle(title, newPage);
+});
 </script>
 <template>
   <MediaCardDisplayer
@@ -28,7 +31,10 @@ watch(page, async (newPage) => {
       :year="item.Year.toString()"
       :custom-classes="[item.Type.toString()]"
       :default-cover="coverUnavailable"
-    />
+      @click="() => navigateToMediaInfo(item.imdbID.toString())"
+    >
+    </MediaCard>
+
     <Footer>
       <UPagination
         :max="3"

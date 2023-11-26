@@ -4,7 +4,7 @@ import type { OMDB_Media, Search } from "~/types/Media";
 interface MediaStore {
   filmsAndSeries: Array<OMDB_Media>;
   totalPages: number;
-  mediaSelected: OMDB_Media | null;
+  mediaSelected: OMDB_Media | undefined;
   search: Search;
   loading: boolean;
 }
@@ -14,7 +14,7 @@ export const useMediaStore = defineStore("Media", {
     ({
       filmsAndSeries: [],
       totalPages: 1,
-      mediaSelected: null,
+      mediaSelected: undefined,
       search: {
         title: "",
         page: 1,
@@ -33,17 +33,25 @@ export const useMediaStore = defineStore("Media", {
       this.setTotalPages(totalResults, 10);
       this.setLoading(false);
     },
+    async searchMediaById(id: string) {
+      this.setLoading(true);
+      const media = await this.getOMDBMedia({
+        i: id,
+      });
+      this.setMediaSelected(media as OMDB_Media)
+      this.setLoading(false);
+    },
     async getOMDBMedia(params: Object) {
       this.setLoading(false);
       const config = useRuntimeConfig();
       const { baseURL, APIKey }: any = config.public;
-      const { Search, totalResults } = await $fetch("/", {
+      const response = await $fetch("/", {
         baseURL,
         params: { apikey: APIKey, ...params },
         server: false,
       });
       this.setLoading(true);
-      return { Search, totalResults };
+      return response;
     },
     setFilmsAndSeries(filmsAndSeries: Array<OMDB_Media> = []): void {
       this.filmsAndSeries = [...filmsAndSeries];
@@ -56,6 +64,9 @@ export const useMediaStore = defineStore("Media", {
     },
     setTotalPages(totalResults: number, resultsPerPage: number) {
       this.totalPages = Math.round(totalResults / resultsPerPage);
+    },
+    setMediaSelected(media: OMDB_Media) {
+      this.mediaSelected = media;
     },
   },
 });
